@@ -40,9 +40,9 @@ class HG_API{
     function dolar_quotation() {
         $data = $this->request('finance/quotations');
         
-        if (!empty($data) && isset($data['results']['currencies']['USD']['buy'])) {
+        if (!empty($data) && is_array($data['results']['currencies']['USD'])) {
             $this->error = false;
-            return $data['results']['currencies']['USD']['buy']; // Retorna apenas o valor de compra
+            return $data['results']['currencies']['USD']; 
         } else {
             $this->error = true;
             return false;
