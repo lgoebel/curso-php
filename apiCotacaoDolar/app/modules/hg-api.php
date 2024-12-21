@@ -2,7 +2,8 @@
 
 class HG_API{
     private $key   = null;
-    private $error = false;
+    private $error = false; 
+    //
     
     function __construct($key = null){
         if(!empty($key)) $this->key = $key;

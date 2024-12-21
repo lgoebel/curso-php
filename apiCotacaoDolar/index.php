@@ -25,7 +25,7 @@ if($hg->is_error() == false){
             <div class="col-12">
                 <p>Cotação Dólar</p>
                 <?php if ($hg->is_error() == false): ?>
-                <p>USD<span class="badge bg-<?php echo($variation); ?>"><?php echo( $dolar['buy']); ?></span></p>
+                  <p>USD<span class="badge bg-<?php echo($variation); ?>"><?php echo( $dolar['buy']); ?></span></p>
                 <?php else : ?>
                   <p><span class="badge bg-danger">Serviços indisponíveis</span></p>
                 <?php endif; ?>
