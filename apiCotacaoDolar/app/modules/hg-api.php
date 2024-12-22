@@ -3,8 +3,8 @@
 class HG_API{
     private $key   = null;
     private $error = false; 
-    //
     
+    // Método construtor
     function __construct($key = null){
         if(!empty($key)) $this->key = $key;
     }
