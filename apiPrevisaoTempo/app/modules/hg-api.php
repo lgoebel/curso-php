@@ -57,7 +57,7 @@ class HG_API_WEATHER{
             return false;
         }
     }
-        
+
     */
 
 
@@ -90,6 +90,11 @@ class HG_API_WEATHER{
         return $this-> error;
     }
     
+    public function weather(){
+
+        $data = $this->request()
+    }
+
 }
 
 
