@@ -18,12 +18,51 @@ class HG_API_WEATHER{
     private $key   = null;
     private $error = false;
 
-    function _construct( $key = null ){
+    // >> CONSTRUTOR
+    public function __construct( $key = null ){
 
-        if( !empty( $key ) ) $this->key = $key;
+        if( !empty( $key ) ) {
+
+            $this->key = $key;
+        }
     }
 
-    function request(){
+    /*
+    
+    public function request($endpoint, $params = []){
+        if( !is_string($endpoint) || !is_array($params)){
+
+            throw new InvalidArgumentException("Parâmetros inválidos!");
+        }
+
+        $uri = "https://api.hgbrasil.com/{$endpoint}?key={$this->key}&format=json";
+
+        if(!empty($params)){
+
+            $uri .= '&' . http_build_query($params);
+        }
+
+        try{
+            $response = file_get_contents($uri);
+            if($response === false){
+                throw new Exception("Error ao realizar a requisição.");
+            }
+
+            $this->error = false;
+            return json_decode($response, true);
+
+        } catch(Exception $e){
+            
+            $this->error = true;
+            return false;
+        }
+    }
+        
+    */
+
+
+    // >> MÉTODO
+    public function request(){
         $uri = "https://api.hgbrasil.com/" . $endpoint . "?key=" . $this->key . "&format=json";
 
         if( is_array( $params )){
@@ -39,14 +78,18 @@ class HG_API_WEATHER{
             $this->error    = false;
             return json_decode( $response, true );
         } else {
-
+            // >> TRATAMENTO DE ERRO
             $this->error = true;
             return false;
         }
     }
+
+    // >> MÉTODO
+    public function is_error(){
+        
+        return $this-> error;
+    }
     
-
-
 }
 
 
