@@ -60,12 +60,11 @@ class HG_API_WEATHER{
 
     */
 
-
     // >> MÉTODO
-    public function request(){
-        $uri = "https://api.hgbrasil.com/" . $endpoint . "?key=" . $this->key . "&format=json";
+    public function request( $endpoint = '', $params = array()){
+        $uri = "https://api.hgbrasil.com/" . $endpoint . "?woeid=" . $this->key . "&format=json";
 
-        if( is_array( $params )){
+        if( is_array($params)){
             
             foreach( $params as $key => $value ){
 
@@ -92,11 +91,17 @@ class HG_API_WEATHER{
     
     public function weather(){
 
-        $data = $this->request()
+        $data = $this->request('weather');
+
+        if (!empty($data) && is_array($data['results']['forecast']['0'])){
+            $this->error = false;
+            return $data['results']['forecast']['0'];
+        } else {
+            $this->error = true;
+            return false;
+        }
     }
 
 }
-
-
 
 ?>
