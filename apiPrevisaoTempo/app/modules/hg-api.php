@@ -35,7 +35,7 @@ class HG_API_WEATHER{
             throw new InvalidArgumentException("Parâmetros inválidos!");
         }
 
-        $uri = "https://api.hgbrasil.com/{$endpoint}?key={$this->key}&format=json";
+        $uri = "https://api.hgbrasil.com/{$endpoint}?woeid={$this->key}&format=json";
 
         if(!empty($params)){
 
@@ -82,7 +82,7 @@ class HG_API_WEATHER{
             return false;
         }
     }
-
+    
     // >> MÉTODO
     public function is_error(){
         
